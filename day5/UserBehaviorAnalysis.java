@@ -25,13 +25,17 @@ public class UserBehaviorAnalysis {
             String currentActivity = activities.get(right);
 
             // Include current activity in the window
-            if (requiredCount.containsKey(currentActivity)) {
-                windowCount.put(currentActivity, windowCount.getOrDefault(currentActivity, 0) + 1);
+            // if (requiredCount.containsKey(currentActivity)) {
+            //     windowCount.put(currentActivity, windowCount.getOrDefault(currentActivity, 0) + 1);
 
-                // Count matching characters only once for valid match
-                if (windowCount.get(currentActivity).equals(requiredCount.get(currentActivity))) {
-                    matched++;
-                }
+            //     // Count matching characters only once for valid match
+            //     if (windowCount.get(currentActivity).equals(requiredCount.get(currentActivity))) {
+            //         matched++;
+            //     }
+            // }
+            if(requiredCount.containsKey(currentActivity)){
+                windowCount.put(currentActivity, windowCount.getOrDefault(currentActivity, 0) + 1);
+                matched++;
             }
 
             // Shrink the window from the left if all required actions are matched
