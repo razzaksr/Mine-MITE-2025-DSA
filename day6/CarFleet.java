@@ -1,122 +1,33 @@
 package day6;
 
 /*
- * Explanation:
-Step-by-Step Results of Each Iteration:
-Example 1:
-Input:
+ * 
+   int target1 = 12;
+   int[] position1 = {10, 8, 0, 5, 3};
+   int[] speed1 = {2, 4, 1, 1, 3};
+   time[5]={}
+   time=[1.0,1.0,12.0,7.0,3.0]>> t-p[i]/s[i]
+   indices[5]=[]
+   indices=[0,1,2,3,4]
+   sort indices based on descending order of position
+   indices=[0, 1, 3, 4, 2]
 
-target = 12
+   stk=[]
+   iterations:
+   i=0, idx=0
+   stk=[1.0]
 
-position = [10, 8, 0, 5, 3]
+   i=1, idx=1
+   no action
 
-speed = [2, 4, 1, 1, 3]
+   i=2, idx=3
+   stk=[1.0,7.0]
 
-Initialization:
+   i=3, idx=4>>3.0
+   stk=[1.0,7.0]
 
-Calculate times to reach target: [1.0, 1.0, 12.0, 7.0, 3.0]
-
-Indices: [0, 1, 2, 3, 4]
-
-Sort indices by position: [2, 3, 4, 1, 0]
-
-Processing:
-
-Stack: []
-
-Iteration 1:
-
-Current index: 2, time: 12.0
-
-Stack: [12.0]
-
-Iteration 2:
-
-Current index: 3, time: 7.0
-
-Stack: [12.0, 7.0]
-
-Iteration 3:
-
-Current index: 4, time: 3.0
-
-Stack: [12.0, 7.0, 3.0]
-
-Iteration 4:
-
-Current index: 1, time: 1.0
-
-Stack: [12.0, 7.0, 3.0, 1.0] (No change as time is not greater than top of stack)
-
-Iteration 5:
-
-Current index: 0, time: 1.0
-
-Stack: [12.0, 7.0, 3.0, 1.0] (No change as time is not greater than top of stack)
-
-Result:
-
-Number of car fleets: 3
-
-Example 2:
-Input:
-
-target = 10
-
-position = [3]
-
-speed = [3]
-
-Initialization:
-
-Calculate times to reach target: [2.333]
-
-Indices: [0]
-
-Sort indices by position: [0]
-
-Processing:
-
-Stack: []
-
-Iteration 1:
-
-Current index: 0, time: 2.333
-
-Stack: [2.333]
-
-Result:
-
-Number of car fleets: 1
-
-Example 3:
-Input:
-target = 100
-position = [0, 2, 4]
-speed = [4, 2, 1]
-
-Initialization:
-Calculate times to reach target: [25.0, 49.0, 96.0]
-Indices: [0, 1, 2]
-Sort indices by position: [2, 1, 0]
-
-Processing:
-Stack: []
-
-Iteration 1:
-Current index: 2, time: 96.0
-Stack: [96.0]
-
-Iteration 2:
-Current index: 1, time: 49.0
-Stack: [96.0] (No change as time is not greater than top of stack)
-
-Iteration 3:
-Current index: 0, time: 25.0
-Stack: [96.0] (No change as time is not greater than top of stack)
-
-Result:
-Number of car fleets: 1
+   i=4, idx=2, >> 12.0
+   stk=[1.0,7.0,12.0]
  */
 
 import java.util.Arrays;
@@ -136,6 +47,7 @@ public class CarFleet {
         }
 
         Arrays.sort(indices, (a, b) -> Integer.compare(position[b], position[a]));
+        System.out.println(Arrays.toString(indices));
 
         Stack<Double> stack = new Stack<>();
 
