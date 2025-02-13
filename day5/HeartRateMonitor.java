@@ -74,7 +74,7 @@ public class HeartRateMonitor {
 
         for (int i = 0; i < n; i++) {
             // Remove indices outside the current window
-            if (!deque.isEmpty() && deque.peekFirst() <= i - k + 1) {
+            if (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
                 deque.pollFirst();
             }
 
@@ -97,8 +97,10 @@ public class HeartRateMonitor {
 
     // Main method to test the solution
     public static void main(String[] args) {
-        int[] heartRates = {72, 80, 75, 90, 85, 92, 88};
-        int k = 3;
+        // int[] heartRates = {72, 80, 75, 90, 85, 92, 88};
+        int[] heartRates = {70, 85, 60, 95, 82, 74, 90};
+        // int k = 3;
+        int k = 2;
 
         int[] maxRates = maxHeartRates(heartRates, k);
 
