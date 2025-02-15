@@ -89,6 +89,7 @@ public class CheapestFlight {
         Map<Integer, Integer> minCost = new HashMap<>();
         while(!pQueue.isEmpty()){
             int[] polled = pQueue.poll();
+            System.out.println(Arrays.toString(polled));
             int cost = polled[0], city = polled[1], stop = polled[2];
             if(city==dest) return cost;
             if(stop>between)continue;
@@ -101,6 +102,7 @@ public class CheapestFlight {
                 if (!minCost.containsKey(nextCity) || minCost.get(nextCity) > newCost) {
                     minCost.put(nextCity, newCost);
                     pQueue.offer(new int[]{newCost, nextCity, stop + 1});
+                    System.out.println("Pushing to queue"+ newCost+" "+nextCity+" "+(stop + 1));
                 }
             }
 
